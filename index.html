@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Meet Dogey, your little virtual Shiba Inu. Share a snack, play together, go for a walk, and make time for a nap.">
+    <meta name="theme-color" content="#f6f5ef">
+    <title>Shibu Pal | Dogey's GigaPet</title>
+    <link rel="icon" href="images/paw.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <!-- Keep jQuery before our script. Both files are local and execute in order. -->
+    <script src="vendor/jquery.min.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- Reusable decorative icons. The buttons also have readable text labels. -->
+    <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <symbol id="icon-paw" viewBox="0 0 24 24"><ellipse cx="6" cy="8" rx="2" ry="3"/><ellipse cx="11" cy="5" rx="2" ry="3"/><ellipse cx="17" cy="7" rx="2" ry="3"/><ellipse cx="20" cy="12" rx="1.8" ry="2.5"/><path d="M5 17c0-2 2-3 4-5 2-2 4-2 6 1 2 2 4 3 3 6-1 3-4 1-6 1s-7 2-7-3Z"/></symbol>
+        <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
+        <symbol id="icon-treat" viewBox="0 0 24 24"><path d="M20.8 12.8A9 9 0 1 1 11.2 3 5 5 0 0 0 21 9a9 9 0 0 1-.2 3.8Z"/><path d="M8 8h.01M7 14h.01M13 16h.01M13 10h.01" stroke-width="3"/></symbol>
+        <symbol id="icon-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M6 5a10 10 0 0 1 0 14M18 5a10 10 0 0 0 0 14M3 12h18"/></symbol>
+        <symbol id="icon-walk" viewBox="0 0 24 24"><path d="M8 3v6c0 3 8 3 8 6v3a3 3 0 0 1-6 0v-1M5 3h6M5 6h6"/><circle cx="10" cy="14" r="2"/></symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.8 14a9 9 0 0 1-11-11 9 9 0 1 0 11 11Z"/></symbol>
+        <symbol id="icon-sound" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5V4ZM15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></symbol>
+        <symbol id="icon-reset" viewBox="0 0 24 24"><path d="M3 10a9 9 0 1 1 2 8M3 4v6h6"/></symbol>
+        <symbol id="icon-bolt" viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-13h-7l1-7Z"/></symbol>
+        <symbol id="icon-weight" viewBox="0 0 24 24"><path d="m5 8-2 13h18L19 8H5Z"/><path d="M9 8V5a3 3 0 0 1 6 0v3"/></symbol>
+        <symbol id="icon-spark" viewBox="0 0 24 24"><path d="m12 2 2.7 7.3L22 12l-7.3 2.7L12 22l-2.7-7.3L2 12l7.3-2.7L12 2Z"/></symbol>
+      </defs>
+    </svg>
+
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Shibu Pal home">
+          <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#icon-paw"></use></svg></span>
+          <span>Shibu<span class="brand-light"> Pal</span><span class="brand-period">.</span></span>
+        </a>
+        <span class="header-caption">SMALL MOMENTS. HAPPY PAWS.</span>
+        <div class="header-controls">
+          <button class="utility-button sound-button" type="button" aria-pressed="false">
+            <svg class="icon" aria-hidden="true"><use href="#icon-sound"></use></svg>
+            <span id="sound-label">Sound off</span>
+          </button>
+          <button class="utility-button reset-button" type="button" title="Reset Dogey's stats and first-hello bonus">
+            <svg class="icon" aria-hidden="true"><use href="#icon-reset"></use></svg>
+            <span>Start over</span>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow"><span></span> YOUR VERY OWN GIGA PET</p>
+            <h1 id="page-title">A little care.<br>A lot of <em>happy.</em></h1>
+          </div>
+          <p class="intro-copy">Good snacks. Silly games. Sleepy afternoons.<br>A little friendship, one click at a time.</p>
+        </section>
+
+        <noscript><p class="noscript-message">Please enable JavaScript to take care of Dogey.</p></noscript>
+
+        <div class="game-layout">
+          <section class="pet-panel" aria-labelledby="pet-title">
+            <div class="pet-heading">
+              <div><p class="eyebrow">SAY HELLO TO</p><h2 id="pet-title" class="name">Dogey</h2><p class="pet-description">Little Shiba. Big heart.</p></div>
+              <span class="status-badge"><span class="status-dot"></span><span id="mood-label">Feeling good</span></span>
+            </div>
+
+            <div class="pet-image-container" data-action="">
+              <div class="scene-circle" aria-hidden="true"></div>
+              <div class="scene-ground" aria-hidden="true"></div>
+              <svg class="icon scene-spark spark-one" aria-hidden="true"><use href="#icon-spark"></use></svg>
+              <svg class="icon scene-spark spark-two" aria-hidden="true"><use href="#icon-spark"></use></svg>
+              <span class="sleep-letters" aria-hidden="true">z <span>z</span> <span>z</span></span>
+              <button class="pet-art-button" type="button" aria-label="Pet Dogey. Your first hello gives 10 happiness points.">
+                <img class="pet-image" src="images/doge.png" alt="Dogey, a golden Shiba Inu sitting with crossed front paws" width="500" height="656" draggable="false">
+              </button>
+              <span class="bonus-badge"><svg class="icon" aria-hidden="true"><use href="#icon-heart"></use></svg><span id="bonus-label">FIRST HELLO +10</span></span>
+            </div>
+
+            <div class="pet-panel-footer">
+              <p id="pet-hint">Psst... click Dogey to say hello.</p>
+              <span><strong class="moment-count">0</strong> little moments together</span>
+            </div>
+          </section>
+
+          <section class="care-panel" aria-labelledby="care-title">
+            <div class="care-heading"><h2 id="care-title">Make Dogey's day.</h2><span class="small-label">A LITTLE TLC GOES A LONG WAY</span></div>
+
+            <div class="stat-grid" aria-label="Dogey's current stats">
+              <div class="stat-card weight-card">
+                <h3><svg class="icon" aria-hidden="true"><use href="#icon-weight"></use></svg>Weight</h3>
+                <p class="stat-number"><span class="weight">12</span><span class="stat-unit">lb</span></p>
+                <p class="stat-caption">Snacks in. Zoomies out.</p>
+              </div>
+              <div class="stat-card happiness-card">
+                <h3><svg class="icon" aria-hidden="true"><use href="#icon-heart"></use></svg>Happiness</h3>
+                <p class="stat-number"><span class="happiness">70</span><span class="stat-unit">/100</span></p>
+                <progress id="happiness-meter" value="70" max="100" aria-label="Happiness">70%</progress>
+              </div>
+              <div class="stat-card energy-card">
+                <h3><svg class="icon" aria-hidden="true"><use href="#icon-bolt"></use></svg>Energy</h3>
+                <p class="stat-number"><span class="energy">75</span><span class="stat-unit">/100</span></p>
+                <progress id="energy-meter" value="75" max="100" aria-label="Energy">75%</progress>
+              </div>
+            </div>
+
+            <!-- Pet comments are shown on the page after every button interaction. -->
+            <div class="reaction-card" role="status" aria-live="polite" aria-atomic="true">
+              <span class="reaction-avatar" aria-hidden="true"><svg class="icon"><use href="#icon-paw"></use></svg></span>
+              <div><p class="reaction-label">DOGEY SAYS</p><p class="pet-message">Hi, I'm Dogey. I think we're going to be great friends!</p></div>
+            </div>
+
+            <div class="button-container actions-grid" aria-label="Take care of Dogey">
+              <button class="action-button treat-button" type="button"><span class="action-icon treat-icon"><svg class="icon" aria-hidden="true"><use href="#icon-treat"></use></svg></span><span><strong>Treat</strong><small>+8 happy · +1 lb<br>+3 energy</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+              <button class="action-button play-button" type="button"><span class="action-icon play-icon"><svg class="icon" aria-hidden="true"><use href="#icon-ball"></use></svg></span><span><strong>Play</strong><small>+12 happy · −1 lb<br>Uses 12 energy</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+              <button class="action-button exercise-button" type="button"><span class="action-icon exercise-icon"><svg class="icon" aria-hidden="true"><use href="#icon-walk"></use></svg></span><span><strong>Exercise</strong><small>−8 happy · −2 lb<br>Uses 18 energy</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+              <button class="action-button nap-button" type="button"><span class="action-icon nap-icon"><svg class="icon" aria-hidden="true"><use href="#icon-moon"></use></svg></span><span><strong id="nap-label">Nap</strong><small id="nap-description">+5 happy · +30 energy<br>A 6-second snooze</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+            </div>
+
+            <section class="activity-panel" aria-labelledby="activity-title">
+              <div class="activity-heading"><h3 id="activity-title">THE LITTLE MOMENTS</h3><span id="save-note">Progress saved on this browser</span></div>
+              <ol class="activity-list"><li class="empty-moment">Your story starts here. Try a treat or a first hello.</li></ol>
+            </section>
+          </section>
+        </div>
+
+        <details class="how-to-play">
+          <summary>New here? A tiny guide to a happy pet.</summary>
+          <div class="guide-content"><p>Give Dogey treats, play a game, or head out for exercise. Play needs 12 energy and exercise needs 18. Let Dogey nap for 6 seconds to recover 30 energy and 5 happiness. Clicking <strong>Wake up</strong> ends a nap early without the recovery bonus.</p><p>Your first click on Dogey gives a one-time +10 happiness bonus. Happiness and energy stay between 0 and 100. Weight stays at or above 0. <strong>Start over</strong> resets the game and makes the greeting bonus available again.</p><p>Progress saves in this browser when storage is available. A page reload wakes Dogey; unfinished naps do not earn a bonus. You can also use Tab and Enter or Space to play.</p></div>
+        </details>
+      </main>
+
+      <footer class="site-footer"><p><svg class="icon" aria-hidden="true"><use href="#icon-paw"></use></svg>A little friend, a little every day.</p><p>Edgar Margarian <span>·</span> COMP 484 <span>·</span> Project 2</p></footer>
+    </div>
+  </body>
+</html>
